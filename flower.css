@@ -82,7 +82,7 @@ body {
     opacity: 0;
     text-shadow: 0 0 25px #ff0000;
     animation: reveal 2s ease forwards;
-    animation-delay: 7s;
+    animation-delay: 2s;
     z-index: 6;
 }
 
@@ -239,4 +239,5 @@ body {
         transform: translateY(100vh) rotate(360deg);
         opacity: 0;
     }
+
 }
