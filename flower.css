@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #300000, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* Tap overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.tap-text {
+    color: #ff4d4d;
+    font-size: 28px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Main text */
+.text {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #ffd6d6;
+    font-size: 22px;
+    text-shadow: 0 0 20px #ff0000;
+    z-index: 5;
+}
+
+/* Name reveal */
+.name-reveal {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    font-size: 26px;
+    color: #ff7a7a;
+    opacity: 0;
+    text-shadow: 0 0 25px #ff0000;
+    animation: reveal 2s ease forwards;
+    animation-delay: 7s;
+    z-index: 6;
+}
+
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Rose */
+.rose {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Bud */
+.bud {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    background: radial-gradient(circle at top, #ff2b2b, #7a0000);
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+/* Petals (RED) */
+.petal {
+    position: absolute;
+    width: 90px;
+    height: 130px;
+    background: radial-gradient(circle at top, #ff3b3b, #8b0000);
+    border-radius: 50%;
+    transform-origin: bottom center;
+    opacity: 0;
+    animation: bloom 6s ease forwards;
+}
+
+.p1 {
+    transform: rotate(0deg);
+    animation-delay: 0.5s;
+}
+
+.p2 {
+    transform: rotate(60deg);
+    animation-delay: 1.5s;
+}
+
+.p3 {
+    transform: rotate(120deg);
+    animation-delay: 2.5s;
+}
+
+.p4 {
+    transform: rotate(180deg);
+    animation-delay: 3.5s;
+}
+
+.p5 {
+    transform: rotate(240deg);
+    animation-delay: 4.5s;
+}
+
+.p6 {
+    transform: rotate(300deg);
+    animation-delay: 5.5s;
+}
+
+@keyframes bloom {
+    from {
+        transform: scale(0.1) rotate(var(--r));
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) rotate(var(--r));
+        opacity: 1;
+    }
+}
+
+/* Stem + leaves */
+.stem {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    width: 6px;
+    height: 240px;
+    background: linear-gradient(#2ecc71, #145a32);
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+.leaf {
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    background: linear-gradient(#2ecc71, #1e8449);
+    border-radius: 50%;
+    top: 200px;
+}
+
+.leaf.left {
+    left: -50px;
+    transform: rotate(-25deg);
+}
+
+.leaf.right {
+    right: -50px;
+    transform: rotate(25deg);
+}
+
+/* Sparkles */
+.sparkles span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle 3s infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Falling petals */
+.falling-petals span {
+    position: absolute;
+    top: -20px;
+    font-size: 22px;
+    animation: fall 9s linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
